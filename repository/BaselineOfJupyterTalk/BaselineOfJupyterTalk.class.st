@@ -52,12 +52,7 @@ BaselineOfJupyterTalk >> getKernelFileReference [
 		command: 'jupyter';
 		arguments: #('kernelspec' 'list');
 		redirectStdout;
-		runAndWaitOnExitDo: [ :process :outString  | 
-				listOfKernels := outString findTokens: Character lf.
-				first := (listOfKernels at:2) findString: ' ' startingAt:12.
-				last := (listOfKernels at:2) findString: 'kernels'. 
-				kernelPath := (listOfKernels at:2) copyFrom: first +2 to: last + 7
-				].
+                kernelPath := '/opt/conda/share/jupyter/kernels';
 		kernelsDir := (FileSystem root / kernelPath / 'pharo') createDirectory.  
 		fileRef := kernelsDir / 'kernel.json'.  
 		fileRef := fileRef ensureCreateFile.
