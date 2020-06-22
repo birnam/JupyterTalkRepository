@@ -47,16 +47,12 @@ BaselineOfJupyterTalk >> createKernelFile [
 
 { #category : #'as yet unclassified' }
 BaselineOfJupyterTalk >> getKernelFileReference [
-	| listOfKernels first last  kernelPath kernelsDir fileRef |
-	OSSUnixSubprocess new
-		command: 'jupyter';
-		arguments: #('kernelspec' 'list');
-		redirectStdout;
-                kernelPath := '/opt/conda/share/jupyter/kernels'.
-		kernelsDir := (FileSystem root / kernelPath / 'pharo') createDirectory.  
-		fileRef := kernelsDir / 'kernel.json'.  
-		fileRef := fileRef ensureCreateFile.
-		^ fileRef
+	| kernelPath kernelsDir fileRef |
+        kernelPath := '/opt/conda/share/jupyter/kernels'.
+        kernelsDir := (FileSystem root / kernelPath / 'pharo') createDirectory.  
+        fileRef := kernelsDir / 'kernel.json'.  
+        fileRef := fileRef ensureCreateFile.
+        ^ fileRef
 		
 
 ]
