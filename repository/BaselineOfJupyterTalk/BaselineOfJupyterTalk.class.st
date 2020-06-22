@@ -52,7 +52,7 @@ BaselineOfJupyterTalk >> getKernelFileReference [
 		command: 'jupyter';
 		arguments: #('kernelspec' 'list');
 		redirectStdout;
-                kernelPath := '/opt/conda/share/jupyter/kernels';
+                kernelPath := '/opt/conda/share/jupyter/kernels'.
 		kernelsDir := (FileSystem root / kernelPath / 'pharo') createDirectory.  
 		fileRef := kernelsDir / 'kernel.json'.  
 		fileRef := fileRef ensureCreateFile.
